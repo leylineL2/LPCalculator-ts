@@ -90,7 +90,8 @@ export async function calc(csvDict:LPCoinObj[]):Promise<LPStructObj>{
         LPDict[LPName].CoinAAmount = await BigNumber(line.CoinAAmount).plus(LPDict[LPName].CoinAAmount)
         LPDict[LPName].CoinBAmount = await BigNumber(line.CoinBAmount).plus(LPDict[LPName].CoinBAmount)
         LPDict[LPName].LPAmount = await BigNumber(line.LPAmount).plus(LPDict[LPName].LPAmount)
-        if(LPDict[LPName].LPAmount.lt(0)) throw new Error("LPAmount Lather than 0!!")
+        if(LPDict[LPName].LPAmount.lt(0)) throw new Error(`LPAmount Lather than 0!! \n ${JSON.stringify(LPDict[LPName])}`)
+
     }
     return LPDict
 }
